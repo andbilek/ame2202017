@@ -4,11 +4,45 @@
 
 <head>
 <title> Hello World HTML </title>	
+<style>
+	
+	body{
+		background-image:url(./vintage-concrete.png);
+	    padding: 10px;
+	    background-size: 100px;
+	}
+	
+	#theName{
+		font-size: 20px;
+	}
+	
+	.desc{
+		text-align: justify;
+		color: #666666;
+	}
+	
+	h3{
+		text-transform:uppercase;
+		text-decoration: underline;
+	}
+	table{
+		border: 1px solid;
+	}
+	tr{
+	    border-bottom: 1px solid;
+	    display: block;
+	-moz-border-radius}
+	td{
+		
+	}
+	
+	
+</style>
 </head>
 
-<body style='background-image:url(./vintage-concrete.png)'>
+<body>
 	<img style='opacity:.5' src='./profile.jpg' height='150' width='150'>
-	<h1> My Name </h1>
+	<h1 class='displayName text boldText' id="theName"> My Name </h1>
 	<h2> <a href='tel:323-123-1344'>323-123-1344</a> | <a href='mailto:me@example.com'>me@example.com</a> </h2>
 	
 	<h3> Objective </h3>
@@ -20,7 +54,7 @@
 		</ul>
 
 	<h3> Skills </h3>
-	<table style="border:10px solid;color:#00ff00; border-color:rgba(0,0,255, .2)">
+	<table style="">
 		<tr>
 			<td> Programming </td>
 			<td> Platforms </td>
@@ -40,9 +74,9 @@
 	</table>
 	
 	<h3> Projects </h3>
-	<p><strong>What is Lorem Ipsum?</strong> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+	<p class='desc'><strong>What is Lorem Ipsum?</strong> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 	</p>
-	<p><strong>Where does it come from?</strong> Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+	<p class='desc'><strong>Where does it come from?</strong> Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
 	</p>
 
 	<h3> References </h3>
