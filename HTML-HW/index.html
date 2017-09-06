@@ -28,15 +28,21 @@
 		border: 1px solid;
 	}
 	tr{
-    border: 1px solid;
     margin: 0;
     padding: 0;
   }
 	td{
-	  border-left: 1px solid;
+    border-left: 1px solid;
+	  border-bottom: 1px solid;
     margin: 0;
     padding: 10px;  
 	}
+  tr:last-of-type td{
+     border-bottom: none;
+     }
+  tr td:first-of-type{
+      border-left: none;
+     }
 </style>
 </head>
 
