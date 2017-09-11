@@ -5,6 +5,7 @@
   <title>Slide Show</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script>
+    var current = 0;
     function start(){
      // $(".container img").css("display", "none");
      // $(".container img:nth-of-type(1)").css("display", "block");
@@ -13,7 +14,11 @@
     }
 
     function goNextSlide(){
+      var next = (current + 1)%4;
       console.log("Next clicked");
+      $(".container img:nth-of-type(" + (current + 1)+ ")").fadeOut() // fade current slide
+      $(".container img:nth-of-type(" + (next+ 1)+ ")").fadeIn() // fadein next slide
+      current = next; // set new current slide
     }
 
     function goPrevSlide(){
