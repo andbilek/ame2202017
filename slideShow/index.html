@@ -4,6 +4,11 @@
 <head>
   <title>Slide Show</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    function start(){
+      alert("here");
+    }
+  </script>
   <style>
     img{
       margin: auto;
@@ -23,7 +28,7 @@
 </head>
 
 
-<body>
+<body onload='start()'>
   <button class='navB' id='prev'> < </button>
   <button class='navB' id='next'> > </button>
 
