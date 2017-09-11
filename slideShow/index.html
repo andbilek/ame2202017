@@ -15,14 +15,16 @@
 
     function goNextSlide(){
       var next = (current + 1)%4;
-      console.log("Next clicked");
-      $(".container img:nth-of-type(" + (current + 1)+ ")").fadeOut(0) // fade current slide
-      $(".container img:nth-of-type(" + (next+ 1)+ ")").fadeIn() // fadein next slide
+      $(".container img:nth-of-type(" + (current + 1)+ ")").stop().fadeOut(0) // fade current slide
+      $(".container img:nth-of-type(" + (next+ 1)+ ")").stop().fadeIn(1000) // fadein next slide
       current = next; // set new current slide
     }
 
     function goPrevSlide(){
-      console.log("Prev clicked");
+      var next = (current + 4 - 1)%4;
+      $(".container img:nth-of-type(" + (current + 1)+ ")").stop().fadeOut(0) // fade current slide
+      $(".container img:nth-of-type(" + (next+ 1)+ ")").stop().fadeIn(1000) // fadein next slide
+      current = next; // set new current slide    
     }
 
   </script>
