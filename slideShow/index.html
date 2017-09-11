@@ -16,7 +16,7 @@
     function goNextSlide(){
       var next = (current + 1)%4;
       console.log("Next clicked");
-      $(".container img:nth-of-type(" + (current + 1)+ ")").fadeOut() // fade current slide
+      $(".container img:nth-of-type(" + (current + 1)+ ")").fadeOut(0) // fade current slide
       $(".container img:nth-of-type(" + (next+ 1)+ ")").fadeIn() // fadein next slide
       current = next; // set new current slide
     }
