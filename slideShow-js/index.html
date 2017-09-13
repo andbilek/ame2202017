@@ -15,15 +15,29 @@
 
     function goNextSlide(){
       var next = (current + 1)%4;
-      $(".container img:nth-of-type(" + (current + 1)+ ")").stop().fadeOut(0) // fade current slide
-      $(".container img:nth-of-type(" + (next+ 1)+ ")").stop().fadeIn(1000) // fadein next slide
+
+      var slides = document.getElementsByTagName("img");
+      slides[0].style.display = "none";
+      slides[1].style.display = "none";
+      slides[2].style.display = "none";
+      slides[3].style.display = "none";
+
+      slides[next].style.display = "block";
+
       current = next; // set new current slide
     }
 
     function goPrevSlide(){
       var next = (current + 4 - 1)%4;
-      $(".container img:nth-of-type(" + (current + 1)+ ")").stop().fadeOut(0) // fade current slide
-      $(".container img:nth-of-type(" + (next+ 1)+ ")").stop().fadeIn(1000) // fadein next slide
+
+      var slides = document.getElementsByTagName("img");
+      slides[0].style.display = "none";
+      slides[1].style.display = "none";
+      slides[2].style.display = "none";
+      slides[3].style.display = "none";
+
+      slides[next].style.display = "block";
+
       current = next; // set new current slide    
     }
 
