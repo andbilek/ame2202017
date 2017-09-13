@@ -4,9 +4,13 @@
 <head>
   <title>Slide Show</title>
   <script>
+  /*
+  current stores the slide visible 
+  to user.
+  */
     var current = 0;
     function start(){
-      var slides = document.getElementsByTagName("img");
+      var slides = document.getElementsByTagName("img"); //get all slides
       slides[0].style.display = "block";
       slides[1].style.display = "none";
       slides[2].style.display = "none";
