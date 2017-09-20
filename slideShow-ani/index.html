@@ -6,8 +6,8 @@
   <script>
     var current = 0;
     function start(){
-      $(".container .slide").fadeOut(0);
-      $(".container .slide:nth-of-type(1)").fadeIn(0);
+      $(".container .slide").css({"display":"none"});
+      $(".container .slide:nth-of-type(1)").css({"display":"block"});
     }
 
     function goNextSlide(){
@@ -26,6 +26,9 @@
 
   </script>
   <style>
+    body{
+      margin: 0px;
+    }
     .container
     {
        height: 100%;
