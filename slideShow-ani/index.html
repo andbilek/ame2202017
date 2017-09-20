@@ -12,15 +12,15 @@
 
     function goNextSlide(){
       var next = (current + 1)%4;
-      $(".container .slide:nth-of-type(" + (current + 1)+ ")").stop().css({"display": "none"}) // fade current slide
-      $(".container .slide:nth-of-type(" + (next+ 1)+ ")").stop().css({"display": "block"}) // fadein next slide
+      $(".container .slide:nth-of-type(" + (current + 1)+ ")").stop().animate({"margin-left":"-100%"});
+      $(".container .slide:nth-of-type(" + (next+ 1)+ ")").stop().css({"margin-left": "100%", "display": "block"}).animate({"margin-left": "0%"}) // fadein next slide
       current = next; // set new current slide
     }
 
     function goPrevSlide(){
       var next = (current + 4 - 1)%4;
-      $(".container .slide:nth-of-type(" + (current + 1)+ ")").stop().css({"display": "none"}) // fade current slide
-      $(".container .slide:nth-of-type(" + (next+ 1)+ ")").stop().css({"display": "block"}) // fadein next slide
+      $(".container .slide:nth-of-type(" + (current + 1)+ ")").stop().animate({"margin-left":"100%"});
+      $(".container .slide:nth-of-type(" + (next+ 1)+ ")").stop().css({"margin-left": "-100%", "display": "block"}).animate({"margin-left": "0%"}) // fadein next slide
       current = next; // set new current slide    
     }
 
@@ -43,6 +43,7 @@
        background-position: 50%;
        background-repeat: no-repeat;
        background-size: contain;
+       position: absolute;
     }
     .navB{
         position: absolute;
