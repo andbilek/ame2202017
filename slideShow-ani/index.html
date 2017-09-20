@@ -1,5 +1,4 @@
 <!doctype html>
-
 <html>
 <head>
   <title>Slide Show</title>
@@ -7,23 +6,21 @@
   <script>
     var current = 0;
     function start(){
-     // $(".container img").css("display", "none");
-     // $(".container img:nth-of-type(1)").css("display", "block");
       $(".container img").fadeOut(0);
       $(".container img:nth-of-type(1)").fadeIn(0);
     }
 
     function goNextSlide(){
       var next = (current + 1)%4;
-      $(".container img:nth-of-type(" + (current + 1)+ ")").stop().fadeOut(0) // fade current slide
-      $(".container img:nth-of-type(" + (next+ 1)+ ")").stop().fadeIn(1000) // fadein next slide
+      $(".container img:nth-of-type(" + (current + 1)+ ")").stop().css({"display": "none"}) // fade current slide
+      $(".container img:nth-of-type(" + (next+ 1)+ ")").stop().css({"display": "block"}) // fadein next slide
       current = next; // set new current slide
     }
 
     function goPrevSlide(){
       var next = (current + 4 - 1)%4;
-      $(".container img:nth-of-type(" + (current + 1)+ ")").stop().fadeOut(0) // fade current slide
-      $(".container img:nth-of-type(" + (next+ 1)+ ")").stop().fadeIn(1000) // fadein next slide
+      $(".container img:nth-of-type(" + (current + 1)+ ")").stop().css({"display": "none"}) // fade current slide
+      $(".container img:nth-of-type(" + (next+ 1)+ ")").stop().css({"display": "block"}) // fadein next slide
       current = next; // set new current slide    
     }
 
