@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Slide Show</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
   <script>
     var current = 0;
     var imageURLs = "";
@@ -28,11 +28,11 @@
       var slides = document.getElementById("container").getElementsByClassName("slide");
       var trackNos = document.getElementById("track").getElementsByClassName("num");
       for(var i = 0; i < slides.length; i++){
-        slides[i].style.display = "none";
+        slides[i].style.marginLeft = "-100%";
       }
 
       //$("#container .slide:nth-of-type(1)").css({"display":"block"});
-      slides[0].style.display = "block";
+      slides[0].style.marginLeft = "0%";
 
       //$("#track .num:nth-of-type(1)").addClass("selected");
       trackNos[0].className = "num selected";
@@ -46,12 +46,18 @@
       var trackNos = document.getElementById("track").getElementsByClassName("num");
 
      // $("#container .slide:nth-of-type(" + (current + 1)+ ")").stop().animate({"margin-left":"-100%"});
+      slides[current].style.transitionDuration = "1s";
       slides[current].style.marginLeft = "-100%";
 
       //$("#container .slide:nth-of-type(" + (next+ 1)+ ")").stop().css({"margin-left": "100%", "display": "block"}).animate({"margin-left": "0%"}) // fadein next slide
+      slides[next].style.transitionDuration = "0s";
       slides[next].style.marginLeft = "100%";
-      slides[next].style.display = "block";
-      slides[next].style.marginLeft = "0%";
+
+      setTimeout(function(){
+        slides[next].style.transitionDuration = "1s";
+        slides[next].style.display = "block";
+        slides[next].style.marginLeft = "0%";
+      }, 10);
 
       //$("#track .num:nth-of-type(" + (current + 1) + ")").removeClass("selected");
       trackNos[current].className = "num";
@@ -64,10 +70,26 @@
     function goPrevSlide(){
       var n = imageURLs.length;
       var next = (current + n - 1)%n;
-      $("#container .slide:nth-of-type(" + (current + 1)+ ")").stop().animate({"margin-left":"100%"});
-      $("#container .slide:nth-of-type(" + (next+ 1)+ ")").stop().css({"margin-left": "-100%", "display": "block"}).animate({"margin-left": "0%"}) // fadein next slide
-      $("#track .num:nth-of-type(" + (current + 1) + ")").removeClass("selected");
-      $("#track .num:nth-of-type(" + (next + 1) + ")").addClass("selected");
+
+      var slides = document.getElementById("container").getElementsByClassName("slide");
+      var trackNos = document.getElementById("track").getElementsByClassName("num");
+
+      //$("#container .slide:nth-of-type(" + (current + 1)+ ")").stop().animate({"margin-left":"100%"});
+      slides[current].style.transitionDuration = "1s";
+      slides[current].style.marginLeft = "100%";
+
+      //$("#container .slide:nth-of-type(" + (next+ 1)+ ")").stop().css({"margin-left": "-100%", "display": "block"}).animate({"margin-left": "0%"}) // fadein next slide
+      slides[next].style.transitionDuration = "0s";
+      slides[next].style.marginLeft = "-100%";
+      slides[next].style.display = "block";
+      slides[next].style.transitionDuration = "1s";
+      slides[next].style.marginLeft = "0%";
+
+      //$("#track .num:nth-of-type(" + (current + 1) + ")").removeClass("selected");
+      trackNos[current].className = "num";
+      //$("#track .num:nth-of-type(" + (next + 1) + ")").addClass("selected");
+      trackNos[next].className = "num selected";
+
       current = next; // set new current slide    
     }
 
@@ -85,7 +107,7 @@
        background: black;
     }
     .slide{
-       margin: auto;
+       margin-left: 0%;
        display: block;
        width: 100%;
        height: 100%;
