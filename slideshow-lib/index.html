@@ -15,15 +15,23 @@
         mu += '<div class="slide" style="background-image:url(' + url + ')"> </div>';
         muT += '<div class="num">' + (i + 1) + '</div>'
       }
-      $("#container").html(mu);
-      $("#track").html(muT);
+      //$("#container").html(mu);
+      document.getElementById("container").innerHTML = mu;
+      //$("#track").html(muT);
+      document.getElementById("track").innerHTML = muT;
 
       init();
     }
 
     function init(){
-      $("#container .slide").css({"display":"none"});
-      $("#container .slide:nth-of-type(1)").css({"display":"block"});
+      //$("#container .slide").css({"display":"none"});
+      var slides = document.getElementById("container").getElementsByClassName("slide");
+      for(var i = 0; i < slides.length; i++){
+        slides[i].style.display = "none";
+      }
+
+      //$("#container .slide:nth-of-type(1)").css({"display":"block"});
+
       $("#track .num:nth-of-type(1)").addClass("selected");
     }
 
