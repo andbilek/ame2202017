@@ -46,11 +46,12 @@
       var trackNos = document.getElementById("track").getElementsByClassName("num");
 
      // $("#container .slide:nth-of-type(" + (current + 1)+ ")").stop().animate({"margin-left":"-100%"});
-      slide[current].style.marginLeft = "-100%";
+      slides[current].style.marginLeft = "-100%";
 
       //$("#container .slide:nth-of-type(" + (next+ 1)+ ")").stop().css({"margin-left": "100%", "display": "block"}).animate({"margin-left": "0%"}) // fadein next slide
-      slide[next].style.marginLeft = "100%";
-      slide[next].style.display = "block";
+      slides[next].style.marginLeft = "100%";
+      slides[next].style.display = "block";
+      slides[next].style.marginLeft = "0%";
 
       //$("#track .num:nth-of-type(" + (current + 1) + ")").removeClass("selected");
       trackNos[current].className = "num";
