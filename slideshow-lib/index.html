@@ -6,10 +6,17 @@
   <script>
     var current = 0;
     function start(){
-      var hash = window.location.hash;
-      console.log(hash);
-      //init();
+      var imageURLs = window.location.hash.replace("#","").split(",")
+      var mu = "";
+      for(var i = 0; i < imageURLs.length; i++){
+        var url = imageURLs[i];
+        mu += '<div class="slide" style="background-image:url(' + url + ')"> </div>';
+      }
+      $("#container").html(mu);
+
+      init();
     }
+
     function init(){
       $("#container .slide").css({"display":"none"});
       $("#container .slide:nth-of-type(1)").css({"display":"block"});
