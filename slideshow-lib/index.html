@@ -8,11 +8,14 @@
     function start(){
       var imageURLs = window.location.hash.replace("#","").split(",")
       var mu = "";
+      var muT = "";
       for(var i = 0; i < imageURLs.length; i++){
         var url = imageURLs[i];
         mu += '<div class="slide" style="background-image:url(' + url + ')"> </div>';
+        muT += '<div class="num">' + (i + 1) + '</div>'
       }
       $("#container").html(mu);
+      $("#track").html(muT);
 
       init();
     }
