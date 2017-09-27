@@ -28,6 +28,7 @@
       $("#container .slide:nth-of-type(1)").css({"display":"block"});
 
       $("#track .num:nth-of-type(1)").addClass("selected");
+      $("#container").css({"background": getBGColor(current)});
     }
 
     function goNextSlide(){
@@ -42,9 +43,9 @@
 
       $("#track .num:nth-of-type(" + (current + 1) + ")").removeClass("selected");
       $("#track .num:nth-of-type(" + (next + 1) + ")").addClass("selected");
-      $("#container").css({"background": getBGColor(current)});
 
       current = next; // set new current slide
+      $("#container").css({"background": getBGColor(current)});
     }
 
     function goPrevSlide(){
@@ -60,18 +61,21 @@
 
       $("#track .num:nth-of-type(" + (current + 1) + ")").removeClass("selected");
       $("#track .num:nth-of-type(" + (next + 1) + ")").addClass("selected");
-      $("#container").css({"background": getBGColor(current)});
 
       current = next; // set new current slide    
+      $("#container").css({"background": getBGColor(current)});
     }
 
 
     function getBGColor(c)
     {
+      var t = imageURLs.length;
+      var cv = parseInt((1 - (c/t)) * 255);
+      console.log(c, cv);
 
-
-      // return s; s = "rgb(34,34,34)";
+      return "rgb(" + cv + "," + cv + "," + cv + ")";
     }
+
   </script>
   <style>
     body{
