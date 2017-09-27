@@ -3,7 +3,49 @@
 <head>
   <title>Slide Show</title>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   <script src='https://raw.githubusercontent.com/tmpvar/hsv2rgb/master/hsv2rgb.js'></script>
+   <script>
+var TAU = Math.PI*2;
+var round = Math.round;
+var min = Math.min;
+var max = Math.max;
+var ceil = Math.ceil;
+module.exports = hsv2rgb;
+
+function set(r, g, b, out) {
+  out[0] = round(r * 255);
+  out[1] = round(g * 255);
+  out[2] = round(b * 255);
+}
+
+function clamp(v, l, u) {
+  return max(l, min(v, u));
+}
+
+function hsv2rgb(h, s, v, out) {
+  out = out || [0, 0, 0];
+  h = h % 360;
+  s = clamp(s, 0, 1);
+  v = clamp(v, 0, 1);
+
+  // Grey
+  if (!s) {
+    out[0] = out[1] = out[2] = ceil(v * 255);
+  } else {
+    var b = ((1 - s) * v);
+    var vb = v - b;
+    var hm = h % 60;
+    switch((h/60)|0) {
+      case 0: set(v, vb * h / 60 + b, b, out); break;
+      case 1: set(vb * (60 - hm) / 60 + b, v, b, out); break;
+      case 2: set(b, v, vb * hm / 60 + b, out); break;
+      case 3: set(b, vb * (60 - hm) / 60 + b, v, out); break;
+      case 4: set(vb * hm / 60 + b, b, v, out); break;
+      case 5: set(v, b, vb * (60 - hm) / 60 + b, out); break;
+    }
+  }
+  return out;
+}
+   </script>
   <script>
     var current = 0;
     var imageURLs = "";
@@ -39,8 +81,8 @@
       var slides = document.getElementById("container").getElementsByClassName("slide");
       var trackNos = document.getElementById("track").getElementsByClassName("num");
 
-      $("#container .slide:nth-of-type(" + (current + 1)+ ")").stop().animate({"margin-left":"-100%"});
-      $("#container .slide:nth-of-type(" + (next+ 1)+ ")").stop().css({"margin-left": "100%", "display": "block"}).animate({"margin-left": "0%"}) // fadein next slide
+      $("#container .slide:nth-of-type(" + (current + 1)+ ")").stop().animate({"margin-left":"-100%"}).css({"transform": "translate3d(0px, 0px, -300px)"});
+      $("#container .slide:nth-of-type(" + (next+ 1)+ ")").stop().css({"margin-left": "100%", "display": "block", "transform": ""}).animate({"margin-left": "0%"}) // fadein next slide
 
       $("#track .num:nth-of-type(" + (current + 1) + ")").removeClass("selected");
       $("#track .num:nth-of-type(" + (next + 1) + ")").addClass("selected");
@@ -56,9 +98,9 @@
       var slides = document.getElementById("container").getElementsByClassName("slide");
       var trackNos = document.getElementById("track").getElementsByClassName("num");
 
-      $("#container .slide:nth-of-type(" + (current + 1)+ ")").stop().animate({"margin-left":"100%"});
+      $("#container .slide:nth-of-type(" + (current + 1)+ ")").stop().animate({"margin-left":"100%"}).css({"transform":"translate3d(0px, 0px, -300px)"});
 
-      $("#container .slide:nth-of-type(" + (next+ 1)+ ")").stop().css({"margin-left": "-100%", "display": "block"}).animate({"margin-left": "0%"}) // fadein next slide
+      $("#container .slide:nth-of-type(" + (next+ 1)+ ")").stop().css({"margin-left": "-100%", "display": "block", "transform": ""}).animate({"margin-left": "0%"}) // fadein next slide
 
       $("#track .num:nth-of-type(" + (current + 1) + ")").removeClass("selected");
       $("#track .num:nth-of-type(" + (next + 1) + ")").addClass("selected");
@@ -71,10 +113,11 @@
     function getBGColor(c)
     {
       var t = imageURLs.length;
-      var cv = parseInt((1 - (c/t)) * 255);
+      //var cv = parseInt((1 - (c/t)) * 255);
+      var cv = hsv2rgb(parseInt((1 - (c/t)) * 360), 1, 1);
       console.log(c, cv);
 
-      return "rgb(" + cv + "," + cv + "," + cv + ")";
+      return "rgb(" + cv[0] + "," + cv[1] + "," + cv[2] + ")";
     }
 
   </script>
@@ -90,6 +133,7 @@
        overflow: hidden;
        background: black;
        transition-duration: 1s;
+       perspective: 500px;
     }
     .slide{
        margin-left: 0%;
