@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Slide Show</title>
-  <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script>
     var current = 0;
     var imageURLs = "";
@@ -24,18 +24,10 @@
     }
 
     function init(){
-      //$("#container .slide").css({"display":"none"});
-      var slides = document.getElementById("container").getElementsByClassName("slide");
-      var trackNos = document.getElementById("track").getElementsByClassName("num");
-      for(var i = 0; i < slides.length; i++){
-        slides[i].style.marginLeft = "-100%";
-      }
+      $("#container .slide").css({"display":"none"});
+      $("#container .slide:nth-of-type(1)").css({"display":"block"});
 
-      //$("#container .slide:nth-of-type(1)").css({"display":"block"});
-      slides[0].style.marginLeft = "0%";
-
-      //$("#track .num:nth-of-type(1)").addClass("selected");
-      trackNos[0].className = "num selected";
+      $("#track .num:nth-of-type(1)").addClass("selected");
     }
 
     function goNextSlide(){
@@ -45,24 +37,11 @@
       var slides = document.getElementById("container").getElementsByClassName("slide");
       var trackNos = document.getElementById("track").getElementsByClassName("num");
 
-     // $("#container .slide:nth-of-type(" + (current + 1)+ ")").stop().animate({"margin-left":"-100%"});
-      slides[current].style.transitionDuration = "1s";
-      slides[current].style.marginLeft = "-100%";
+      $("#container .slide:nth-of-type(" + (current + 1)+ ")").stop().animate({"margin-left":"-100%"});
+      $("#container .slide:nth-of-type(" + (next+ 1)+ ")").stop().css({"margin-left": "100%", "display": "block"}).animate({"margin-left": "0%"}) // fadein next slide
 
-      //$("#container .slide:nth-of-type(" + (next+ 1)+ ")").stop().css({"margin-left": "100%", "display": "block"}).animate({"margin-left": "0%"}) // fadein next slide
-      slides[next].style.transitionDuration = "0s";
-      slides[next].style.marginLeft = "100%";
-
-      setTimeout(function(){
-        slides[next].style.transitionDuration = "1s";
-        slides[next].style.display = "block";
-        slides[next].style.marginLeft = "0%";
-      }, 10);
-
-      //$("#track .num:nth-of-type(" + (current + 1) + ")").removeClass("selected");
-      trackNos[current].className = "num";
-      //$("#track .num:nth-of-type(" + (next + 1) + ")").addClass("selected");
-      trackNos[next].className = "num selected";
+      $("#track .num:nth-of-type(" + (current + 1) + ")").removeClass("selected");
+      $("#track .num:nth-of-type(" + (next + 1) + ")").addClass("selected");
 
       current = next; // set new current slide
     }
@@ -74,21 +53,12 @@
       var slides = document.getElementById("container").getElementsByClassName("slide");
       var trackNos = document.getElementById("track").getElementsByClassName("num");
 
-      //$("#container .slide:nth-of-type(" + (current + 1)+ ")").stop().animate({"margin-left":"100%"});
-      slides[current].style.transitionDuration = "1s";
-      slides[current].style.marginLeft = "100%";
+      $("#container .slide:nth-of-type(" + (current + 1)+ ")").stop().animate({"margin-left":"100%"});
 
-      //$("#container .slide:nth-of-type(" + (next+ 1)+ ")").stop().css({"margin-left": "-100%", "display": "block"}).animate({"margin-left": "0%"}) // fadein next slide
-      slides[next].style.transitionDuration = "0s";
-      slides[next].style.marginLeft = "-100%";
-      slides[next].style.display = "block";
-      slides[next].style.transitionDuration = "1s";
-      slides[next].style.marginLeft = "0%";
+      $("#container .slide:nth-of-type(" + (next+ 1)+ ")").stop().css({"margin-left": "-100%", "display": "block"}).animate({"margin-left": "0%"}) // fadein next slide
 
-      //$("#track .num:nth-of-type(" + (current + 1) + ")").removeClass("selected");
-      trackNos[current].className = "num";
-      //$("#track .num:nth-of-type(" + (next + 1) + ")").addClass("selected");
-      trackNos[next].className = "num selected";
+      $("#track .num:nth-of-type(" + (current + 1) + ")").removeClass("selected");
+      $("#track .num:nth-of-type(" + (next + 1) + ")").addClass("selected");
 
       current = next; // set new current slide    
     }
@@ -105,6 +75,7 @@
        position: absolute;
        overflow: hidden;
        background: black;
+       transition-duration: 1s;
     }
     .slide{
        margin-left: 0%;
