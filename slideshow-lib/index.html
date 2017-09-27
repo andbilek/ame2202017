@@ -42,6 +42,7 @@
 
       $("#track .num:nth-of-type(" + (current + 1) + ")").removeClass("selected");
       $("#track .num:nth-of-type(" + (next + 1) + ")").addClass("selected");
+      $("#container").css({"background": getBGColor(current)});
 
       current = next; // set new current slide
     }
@@ -59,10 +60,18 @@
 
       $("#track .num:nth-of-type(" + (current + 1) + ")").removeClass("selected");
       $("#track .num:nth-of-type(" + (next + 1) + ")").addClass("selected");
+      $("#container").css({"background": getBGColor(current)});
 
       current = next; // set new current slide    
     }
 
+
+    function getBaColor(c)
+    {
+
+      // return s; s = "rgb(34,34,34)";
+
+    }
   </script>
   <style>
     body{
