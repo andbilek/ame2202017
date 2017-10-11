@@ -12,7 +12,7 @@ var dialogLib = {
       $("body").append(outS);
     },
     hide: function(){
-
+      $(".wrapper").remove();
     }
   }
 }
