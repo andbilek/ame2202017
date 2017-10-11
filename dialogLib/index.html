@@ -13,7 +13,7 @@ var alertClicked = function()
 
 function confirmClicked()
 {
-  dialogLib.confirm.show("Is the Universe is infinite?");
+  dialogLib.confirm.show("Is the Universe is infinite?", "Yes", "No", function(){alert("user says yes!")}, function(){alert("User says no")});
 }
 
 </script>
