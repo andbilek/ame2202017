@@ -4,6 +4,7 @@ var dialogLib = {
     
     },
     hide: function(){
+
     }
   }
 }
