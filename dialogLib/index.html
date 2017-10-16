@@ -8,7 +8,7 @@
 <script>
 var alertClicked = function()
 {
-  dialogLib.alert.show("There is no spoon", "OK, I know");
+  dialogLib.alert.show("There is no spoon", "OK, I know", function(){alert("user clicked ok")});
 }
 
 function confirmClicked()
