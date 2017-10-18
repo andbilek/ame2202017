@@ -70,6 +70,7 @@ var dialogLib = {
           "</div>"+
         "</div>";
       $("body").append(outS);
+      $(".wrapper .frame .userInput").focus();
     }
   }
 
