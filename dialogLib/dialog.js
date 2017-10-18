@@ -49,5 +49,30 @@ var dialogLib = {
     hide: function(){
       $(".wrapper").remove();
     }
+  },
+
+  prompt:{
+    _CB: function(){},
+    _bClicked: function(){
+      var val = $(".wrapper .frame .userInput").val();
+      _CB(val);
+      $(".wrapper").remove();
+    },
+    show: function(msg, label, callback){
+      _CB = callback = callback || function(){};
+      label = label || "Continue";
+      var outS = "";
+      outS += "<div class='wrapper'>" +
+          "<div class='frame'>" +
+            "<h1>" + msg + "</h1>"+
+            "<input type='text' class='userInput'/>"+
+            "<button onclick='dialogLib.prompt._bClicked()'>" + label + "</button>"+
+          "</div>"+
+        "</div>";
+      $("body").append(outS);
+    }
   }
+
+
+
 }

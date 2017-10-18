@@ -16,6 +16,11 @@ function confirmClicked()
   dialogLib.confirm.show("Is the Universe is infinite?", "Yes", "No", function(){alert("user says yes!")}, function(){alert("User says no")});
 }
 
+function promptClicked()
+{
+  dialogLib.prompt.show("Enter Name:", "OK, continue", function(data){alert(data)});
+}
+
 </script>
 </head>
 
