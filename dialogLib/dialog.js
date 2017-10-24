@@ -52,28 +52,35 @@ var dialogLib = {
   },
 
   prompt:{
-    _CB: function(){},
-    _bClicked: function(){
+    _yCB: function(){},
+    _nCB: function(){},
+    _yesClicked: function(){
       var val = $(".wrapper .frame .userInput").val();
-      _CB(val);
+      _yCB(val);
+      $(".wrapper").remove();
+    }, 
+    _noClicked: function(){
+      var val = $(".wrapper .frame .userInput").val();
+      _nCB(val);
       $(".wrapper").remove();
     },
-    show: function(msg, label, callback){
-      _CB = callback = callback || function(){};
-      label = label || "Continue";
+    show: function(msg, yesLabel, noLabel, yesCB, noCB){
+      _yCB = yesCB = yesCB || function(){};
+      _nCB = noCB = noCB || function(){};
+      yesLabel = yesLabel || "OK";
+      noLabel = noLabel || "Cancel";
+      
       var outS = "";
       outS += "<div class='wrapper'>" +
           "<div class='frame'>" +
             "<h1>" + msg + "</h1>"+
             "<input type='text' class='userInput'/>"+
-            "<button onclick='dialogLib.prompt._bClicked()'>" + label + "</button>"+
+            "<button onclick='dialogLib.prompt._noClicked()'>" + noLabel + "</button>"+
+            "<button onclick='dialogLib.prompt._yesClicked()'>" + yesLabel + "</button>"+
           "</div>"+
         "</div>";
       $("body").append(outS);
       $(".wrapper .frame .userInput").focus();
     }
   }
-
-
-
 }

@@ -18,7 +18,7 @@ function confirmClicked()
 
 function promptClicked()
 {
-  dialogLib.prompt.show("Enter Name:", "OK, continue", function(data){alert(data)});
+  dialogLib.prompt.show("Enter Name:", "OK, continue", "No, cancel", function(data){alert(data)}, function(data){alert(data)});
 }
 
 </script>
