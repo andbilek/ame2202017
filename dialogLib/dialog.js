@@ -1,3 +1,5 @@
+var data_y;
+
 var dialogLib = {
   alert:{
     _CB: function(){},
@@ -58,23 +60,32 @@ var dialogLib = {
       var val = $(".wrapper .frame .userInput").val();
       _yCB(val);
       $(".wrapper").remove();
-    }, 
+    },
     _noClicked: function(){
       var val = $(".wrapper .frame .userInput").val();
       _nCB(val);
       $(".wrapper").remove();
     },
+    _handleKD: function(e){
+	var key = e.key.toLowerCase();
+	if(key == "escape"){
+	   dialogLib.prompt._noClicked();
+	}
+	else if(key == "enter"){
+	   dialogLib.prompt._yesClicked();
+	}
+    },
+
     show: function(msg, yesLabel, noLabel, yesCB, noCB){
-      _yCB = yesCB = yesCB || function(){};
-      _nCB = noCB = noCB || function(){};
       yesLabel = yesLabel || "OK";
       noLabel = noLabel || "Cancel";
-      
+      _yCB = yesCB = yesCB || function(){};
+      _nCB = noCB = noCB || function(){};
       var outS = "";
       outS += "<div class='wrapper'>" +
           "<div class='frame'>" +
             "<h1>" + msg + "</h1>"+
-            "<input type='text' class='userInput'/>"+
+            "<input onkeydown='dialogLib.prompt._handleKD(event)' type='text' class='userInput'/>"+
             "<button onclick='dialogLib.prompt._noClicked()'>" + noLabel + "</button>"+
             "<button onclick='dialogLib.prompt._yesClicked()'>" + yesLabel + "</button>"+
           "</div>"+
