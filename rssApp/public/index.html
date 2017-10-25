@@ -7,8 +7,8 @@ function start()
 {
   var url = 'https://rss.itunes.apple.com/api/v1/us/apple-music/hot-tracks/all/10/non-explicit.json';
   loadFile("./getFeed?url=" + url, function(data){
-  });
     document.getElementById("list").innerHTML = data;
+  });
 }
 </script>
 </head>
