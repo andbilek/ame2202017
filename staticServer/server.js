@@ -7,6 +7,45 @@ var hostname = process.env.HOSTNAME || 'localhost';
 var port = 8080;
 
 
+app.get("/sub", function (req, res) {
+  var a = req.query.a
+  var b = req.query.b
+  
+  if(a == undefined || b == undefined){
+    res.send("malformed request")
+  }
+  else{
+    res.send((parseFloat(a)-parseFloat(b)).toString());
+  }
+});
+
+
+app.get("/mult", function (req, res) {
+  var a = req.query.a
+  var b = req.query.b
+  
+  if(a == undefined || b == undefined){
+    res.send("malformed request")
+  }
+  else{
+    res.send((parseFloat(a)*parseFloat(b)).toString());
+  }
+});
+
+
+app.get("/div", function (req, res) {
+  var a = req.query.a
+  var b = req.query.b
+  
+  if(a == undefined || b == undefined){
+    res.send("malformed request")
+  }
+  else{
+    res.send((parseFloat(a)/parseFloat(b)).toString());
+  }
+});
+
+
 app.get("/add", function (req, res) {
   var a = req.query.a
   var b = req.query.b
