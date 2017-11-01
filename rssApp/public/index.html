@@ -2,16 +2,51 @@
 <html>
 <head>
 <style>
+#list{
+  width: 220px;
+}
+
+#selectedItem
+{
+    position: absolute;
+    right: 0px;
+    top: 80px;
+    width: calc(100% - 240px);
+    min-height: 200px;
+}
+
 #list button{
   display: block;
   width: 100%;
 }
+#list button img{
+  width: 50px;
+  height: 50px;
+  float: left;
+}
+#list button h1, #list button h2{
+    text-align: left;
+    width: calc(100% - 60px);
+    margin: 0px;
+    margin-left: 60px;
+}
+
 </style>
 <script src="asyncReq.js"> </script>
 <script>
+var items;
+
+function itemSelected(id)
+{
+    var markup = "";
+    markup += "<img src='" + items[id].artworkUrl100 + "'>";
+    markup += "<h1>" + items[id].name + "</h1>"
+    markup += "<h2>" + items[id].artistName + "</h2>"
+    document.getElementById("selectedItem").innerHTML = markup;
+}
+
 function start()
 {
-  var items;
   var url = 'https://rss.itunes.apple.com/api/v1/us/apple-music/hot-tracks/all/10/non-explicit.json';
   loadFile("./getFeed?url=" + url, function(data){
     console.log(data);
@@ -21,7 +56,7 @@ function start()
     var markup = "";
     for(var i = 0; i < items.length; i++){
       markup += "<button onclick='itemSelected(" + i + ")'>"
-        markup += "<img src='" + items[i].artworkUrl100 + "'><br>";
+        markup += "<img src='" + items[i].artworkUrl100 + "'>";
         markup += "<h1>" + items[i].name + "</h1>"
         markup += "<h2>" + items[i].artistName + "</h2>"
       markup += "</button>";
