@@ -1,20 +1,30 @@
 <!doctype html>
 <html>
 <head>
+<style>
+#list button{
+  display: block;
+  width: 100%;
+}
+</style>
 <script src="asyncReq.js"> </script>
 <script>
 function start()
 {
+  var items;
   var url = 'https://rss.itunes.apple.com/api/v1/us/apple-music/hot-tracks/all/10/non-explicit.json';
   loadFile("./getFeed?url=" + url, function(data){
     console.log(data);
     data = JSON.parse(data);
-    var items = data.feed.results;
+    items = data.feed.results;
     console.log(items);
     var markup = "";
     for(var i = 0; i < items.length; i++){
-      markup += "<h1>" + items[i].name + "</h1><br>"
-      markup += "<img src='" + items[i].artworkUrl100 + "'>";
+      markup += "<button onclick='itemSelected(" + i + ")'>"
+        markup += "<img src='" + items[i].artworkUrl100 + "'><br>";
+        markup += "<h1>" + items[i].name + "</h1>"
+        markup += "<h2>" + items[i].artistName + "</h2>"
+      markup += "</button>";
     }
     document.getElementById("list").innerHTML = markup;
   });
