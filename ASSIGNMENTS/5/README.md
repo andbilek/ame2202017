@@ -8,4 +8,4 @@ entry in it's own box:
  - Thumbnail
  - Album name (with link)
  - Artist Name (with link)
- - Artist (with link)
+ - Genre (with link)
