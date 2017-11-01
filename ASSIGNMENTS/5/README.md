@@ -6,6 +6,6 @@
 Taking inspiration from the code handout and list the following for each
 entry in it's own box:
  - Thumbnail
- - Album Name
- - Artist
- - Description
+ - Album name (with link)
+ - Artist Name (with link)
+ - Artist (with link)
