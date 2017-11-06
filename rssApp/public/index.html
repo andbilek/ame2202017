@@ -1,9 +1,24 @@
 <!doctype html>
 <html>
 <head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width, maximum-scale=1.0">
 <style>
-#list{
-  width: 220px;
+@media (max-width: 480px){
+  #list{
+    width: 100%;
+  }
+  #selectedItem{
+    width: 100%;
+  }
+}
+
+@media (min-width: 480px){
+  #list{
+    width: 220px;
+  }
+  #selectedItem{
+    width: calc(100% - 240px);
+  }
 }
 
 #selectedItem
@@ -11,8 +26,9 @@
     position: absolute;
     right: 0px;
     top: 80px;
-    width: calc(100% - 240px);
     min-height: 200px;
+    text-align: center;
+    background: rgba(0,0,0,.1);
 }
 
 #list button{
@@ -40,8 +56,18 @@ function itemSelected(id)
 {
     var markup = "";
     markup += "<img src='" + items[id].artworkUrl100 + "'>";
-    markup += "<h1>" + items[id].name + "</h1>"
-    markup += "<h2>" + items[id].artistName + "</h2>"
+    markup += "<a target='_blank' href='" + items[id].url + "'><h1>" + items[id].name + "</h1> (" + items[id].collectionName + ")</a>"
+    markup += "<a target='_blank' href='" + items[id].artistUrl + "'><h2>" + items[id].artistName + "</h2></a>"
+
+    var genres = items[id].genres;
+    markup += "<p> GENRES: <br>"
+    for(var i = 0; i < genres.length; i++){
+      markup += "<a target='_blank' href='" + genres[i].url + "'>" + genres[i].name+ "   </a></br>";
+    }
+    markup += "</p>"
+
+    markup += "<p>" + new Date(items[id].releaseDate).toDateString() + "</p>";
+    markup += "<p>" + items[id].copyright + "</p>";
     document.getElementById("selectedItem").innerHTML = markup;
 }
 
