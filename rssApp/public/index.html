@@ -4,7 +4,11 @@
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width, maximum-scale=1.0">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
-@media (max-width: 480px){
+.nowSelected{
+  background: gold;
+}
+
+@media (max-width: 480px){ //small screen
   #list{
     width: 100%;
   }
@@ -15,7 +19,6 @@
     width: 100%;
     display: none;
   }
-
   body.selected #selectedItem{
     display: block;
   }
@@ -24,7 +27,7 @@
   }
 }
 
-@media (min-width: 480px){
+@media (min-width: 480px){ // big screen
   #backButton
   {
       display: none;
@@ -86,11 +89,14 @@ function itemSelected(id)
     markup += "<p>" + items[id].copyright + "</p>";
     document.getElementById("selectedItem").innerHTML = markup;
     $("body").addClass("selected");
+    $("#list button").removeClass("nowSelected");
+    $("#list button:nth-of-type(" + (id+1)+ ")").addClass("nowSelected");
 }
 
 function start()
 {
-  var url = 'https://rss.itunes.apple.com/api/v1/us/apple-music/hot-tracks/all/10/non-explicit.json';
+  //var url = 'https://rss.itunes.apple.com/api/v1/us/apple-music/hot-tracks/all/10/non-explicit.json';
+  var url = 'https://rss.itunes.apple.com/api/v1/us/apple-music/top-albums/all/10/non-explicit.json';
   loadFile("./getFeed?url=" + url, function(data){
     console.log(data);
     data = JSON.parse(data);
@@ -110,7 +116,9 @@ function start()
 
 function goBack()
 {
-  $("body").removeClass("selected")
+  $("body").removeClass("selected");
+  var x = '$("#list button").removeClass("nowSelected")'
+  setTimeout(x, 1000);
 }
 </script>
 </head>

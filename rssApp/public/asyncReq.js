@@ -1,3 +1,10 @@
+/**
+ * loadFile(String getRequest, function(data){
+ *    // data is received from server;
+ * })
+ * */
+
+
 function getXMLHTTPRequest()
 {
     var request;
