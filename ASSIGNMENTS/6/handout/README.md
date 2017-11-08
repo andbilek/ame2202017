@@ -6,5 +6,5 @@
 Taking inspiration from the code handout and make sure that the right
 RSS feed is displayed when the user changes thier drop-down selection.
 
-##Grading
+## Grading
 Via demo in class.
