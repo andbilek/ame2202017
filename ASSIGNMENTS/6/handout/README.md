@@ -3,7 +3,7 @@
 
 ## Task 
 
-Taking inspiration from the code handout and make sure that the right
+Taking inspiration from the code handout, make sure that the correct 
 RSS feed is displayed when the user changes thier drop-down selection.
 
 ## Grading
