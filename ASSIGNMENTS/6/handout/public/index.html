@@ -132,14 +132,15 @@ function goBack()
 
 <body onload='start()'>
 <h1 style='display:inline-block;'> iTunes RSS READER</h1>
+
 <select id='theSelect' onchange='selectChanged()'> 
   <option value='https://rss.itunes.apple.com/api/v1/us/apple-music/hot-tracks/all/10/non-explicit.json'> Hot tracks</option>
   <option value='https://rss.itunes.apple.com/api/v1/us/itunes-music/new-music/all/10/non-explicit.json'> All tracks </option>
   <option value='https://rss.itunes.apple.com/api/v1/us/itunes-music/recent-releases/all/10/non-explicit.json'> Recent </option>
   <option value='https://rss.itunes.apple.com/api/v1/us/itunes-music/top-albums/all/10/non-explicit.json'> Albums </option>
   <option value='https://rss.itunes.apple.com/api/v1/us/itunes-music/top-songs/all/10/non-explicit.json'> Songs </option>
-
 </select>
+
 <div id='list'> </div>
 <div id='selectedItem'> </div>
 
