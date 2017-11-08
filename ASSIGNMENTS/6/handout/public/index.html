@@ -93,10 +93,9 @@ function itemSelected(id)
     $("#list button:nth-of-type(" + (id+1)+ ")").addClass("nowSelected");
 }
 
-function start()
+function loadFeed(url)
 {
-  //var url = 'https://rss.itunes.apple.com/api/v1/us/apple-music/hot-tracks/all/10/non-explicit.json';
-  var url = 'https://rss.itunes.apple.com/api/v1/us/apple-music/top-albums/all/10/non-explicit.json';
+
   loadFile("./getFeed?url=" + url, function(data){
     console.log(data);
     data = JSON.parse(data);
@@ -114,6 +113,10 @@ function start()
   });
 }
 
+function start()
+{
+}
+
 function goBack()
 {
   $("body").removeClass("selected");
@@ -124,8 +127,15 @@ function goBack()
 </head>
 
 <body onload='start()'>
-<h1> RSS READER</h1>
+<h1 style='display:inline-block;'> iTunes RSS READER</h1>
+<select onchange='selectChanged()'> 
+  <option value='https://rss.itunes.apple.com/api/v1/us/apple-music/hot-tracks/all/10/non-explicit.json'> Hot tracks</option>
+  <option value='https://rss.itunes.apple.com/api/v1/us/itunes-music/new-music/all/10/non-explicit.json'> All tracks </option>
+  <option value='https://rss.itunes.apple.com/api/v1/us/itunes-music/recent-releases/all/10/non-explicit.json'> Recent </option>
+  <option value='https://rss.itunes.apple.com/api/v1/us/itunes-music/top-albums/all/10/non-explicit.json'> Albums </option>
+  <option value='https://rss.itunes.apple.com/api/v1/us/itunes-music/top-songs/all/10/non-explicit.json'> Songs </option>
 
+</select>
 <div id='list'> </div>
 <div id='selectedItem'> </div>
 
