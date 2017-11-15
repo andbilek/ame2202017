@@ -4,11 +4,12 @@
 <script>
   function setTime()
   {
-    var dObj = new Date();
+    var offset = parseFloat(document.getElementById("DropDownTimezone").value);
+    var dObj = new Date(new Date().getTime() + new Date().getTimezoneOffset() * 60*1000 + offset*60*60*1000);
     var h = dObj.getHours();
     var m = dObj.getMinutes();
     var s = dObj.getSeconds();
-    console.log(h,m,s);
+
     var hAngle = (h-3) * 30 + .5 * m;
     var mAngle = (m-15) * 6;
     var sAngle = (s-15) * 6;
