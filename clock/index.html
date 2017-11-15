@@ -9,6 +9,13 @@
     var m = dObj.getMinutes();
     var s = dObj.getSeconds();
     console.log(h,m,s);
+    var hAngle = (h-3) * 30;
+    var mAngle = (m-15) * 6;
+    var sAngle = (s-15) * 6;
+
+    document.getElementById("hourN").style.transform = "rotate(" + hAngle + "deg)";
+    document.getElementById("minN").style.transform = "rotate(" + mAngle + "deg)";
+    document.getElementById("secN").style.transform = "rotate(" + sAngle + "deg)";
 
   }
 </script>
