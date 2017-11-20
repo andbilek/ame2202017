@@ -11,8 +11,7 @@ Make a simple webapp that can render all icons sizes listed here
 ](./sample.png
 "")
 
-
-Assume the daylight is from 6am to 6pm.
+Refer to ``../canvas/index.html`` for hints.
 
 ## Submission
 Demo in class + code on Github.
