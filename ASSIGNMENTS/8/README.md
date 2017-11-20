@@ -4,7 +4,7 @@
 ## Task 
 
 Make a simple webapp that can render all icons sizes listed here
-(https://makeappicon.com/ios8icon)[https://makeappicon.com/ios8icon].
+[https://makeappicon.com/ios8icon] (https://makeappicon.com/ios8icon).
 (see figure below).
 
 ![eg
