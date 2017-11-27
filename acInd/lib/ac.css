@@ -20,7 +20,7 @@
 	display: block;
 	margin: auto;
 	margin-top: calc(50% + 25px);
-	background-image: url(https://dl2.macupdate.com/images/icons256/54019.png?d=1432396017);
+	background-image: url(img.png);
 	background-size: 50px;
     background-position: 50%;
 	animation: spinning infinite linear 1s;
